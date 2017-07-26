@@ -39,3 +39,31 @@ def add_damage_deposit(cost_after_taxes):
     total = deposit_amount + cost_after_taxes
     return round(total, 2)
 
+def return_deposit(deposit):
+    '''float -> float
+
+    returns the deposit back to customer
+    if no damage is done to rental bike
+    (deposit: 10% of total price)
+    >>> return_deposit(141.23)
+    12.84
+    >>> return_deposit(164.77)
+    14.98
+    '''
+    deposit = add_damage_deposit(cost_after_taxes) - adding_tax(beginning_cost)
+    return round(deposit, 2)
+
+def choose_motorcycle(code):
+    '''str -> str'''
+    if code == '1':
+        return '2006 Suzuki GSXR 600'
+    elif code == '2':
+        return '2004 Yamaha R1 1000'
+    elif code == '3':
+        return '2001 Kawasaki Ninja ZX-9R 900'
+    elif code == '4':
+        return '2016 Honda CBR 500'
+    elif code == '5':
+        return '2017 Kawasaki Ninja EX 650'
+    elif code == '6':
+        return '2009 Suzuki GSX 1000 Hayabusa'

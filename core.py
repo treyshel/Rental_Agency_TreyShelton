@@ -1,3 +1,16 @@
+def inventory(line, lines):
+    ''' [str, [str, str]]'''
+    motorcycle = {}
+    key_1, key_2, key_3 = keys
+    for line in lines:
+        code, type_of_motorcycle, color = line.strip().split(', ')
+        motorcycle[code] = {
+            key_1: code, 
+            key_2: type_of_motorcycle, 
+            key_3: color
+        }
+    return motorcycle
+
 def adding_tax(beginning_cost):
     '''float -> float
     

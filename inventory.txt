@@ -1,0 +1,7 @@
+code, motorcycle, color
+1, 2006 Suzuki GSXR 600, blue and white
+2, 2004 Yamaha R1 1000, red
+3, 2001 Kawasaki Ninja ZX-9R 900, grey
+4, 2016 Honda CBR 500, white and black
+5, 2017 Kawasaki Ninja EX 650, bright green
+6, 2009 Suzuki GSX 1000 Hayabusa, red and black

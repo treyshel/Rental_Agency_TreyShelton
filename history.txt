@@ -1,0 +1,1 @@
+type_of_motorcycle, amount_of_days, total_cost

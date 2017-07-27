@@ -1,4 +1,4 @@
-code, motorcycle, color, quantity
+code, type_of_motorcycle, color, quantity
 0660, 2006 Suzuki GSXR 600, blue, 5 
 0410, 2004 Yamaha R1 1000, red, 9
 0190, 2001 Kawasaki Ninja ZX-9R 900, grey, 4

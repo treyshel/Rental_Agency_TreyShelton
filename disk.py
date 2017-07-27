@@ -1,7 +1,7 @@
 # call the inventory.txt file in my parameter when I run this function
 def dos_inventory(filename):
-    ''' str -> [str, [str, str]]
-    [[1, '2006 Suzuki GSXR 600', 'blue and white'], [2, '2004 Yamaha R1 1000', 'red'], [3, '2001 Kawasaki Ninja ZX-9R 900', 'grey'], [4, '2016 Honda CBR 500', 'white and black'], [5, '2017 Kawasaki Ninja EX 650', 'bright green'], [6, '2009 Suzuki GSX 1000 Hayabusa', 'red and black']]
+    ''' None -> [str, [str, str]]
+    [[0660, '2006 Suzuki GSXR 600', 'blue', 5], [0410, '2004 Yamaha R1 1000', 'red', 9], [0190, '2001 Kawasaki Ninja ZX-9R 900', 'grey', 4], [1650, '2016 Honda CBR 500', 'white', 2], [1765, '2017 Kawasaki Ninja EX 650', 'green', 4], [0910, '2009 Suzuki GSX 1000 Hayabusa', 'black', 8]]
     '''
     motorcycle = []
     with open(filename, 'r') as file:

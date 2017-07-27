@@ -1,9 +1,9 @@
-def inventory(line, lines):
+def inventory(keys, lines):
     ''' [str, [str, str]]'''
     motorcycle = {}
     key_1, key_2, key_3 = keys
-    for line in lines:
-        code, type_of_motorcycle, color = line.strip().split(', ')
+    for keys in lines:
+        code, type_of_motorcycle, color = keys.strip().split(', ')
         motorcycle[code] = {
             key_1: code, 
             key_2: type_of_motorcycle, 
@@ -16,16 +16,10 @@ def adding_tax(beginning_cost):
     
     adds 7% tax in to the starting cost
     
-    >>> adding_tax(119.99)
-    128.39
     >>> adding_tax(139.99)
     149.79
-    >>> adding_tax(169.99)
-    181.89
-    >>> adding_tax(209.99)
-    224.69
-    >>> adding_tax(259.99)
-    278.19
+    >>> adding_tax(279.98)
+    299.58
     '''
     tax_amount = beginning_cost * .07
     total_with_tax = tax_amount + beginning_cost
@@ -37,16 +31,10 @@ def add_damage_deposit(cost_after_taxes):
     adds 10% to the cost after taxes to 
     cover the damage fee
 
-    >>> add_damage_deposit(128.39)
-    141.23
     >>> add_damage_deposit(149.79)
     164.77
-    >>> add_damage_deposit(181.89)
-    200.08
-    >>> add_damage_deposit(224.69)
-    247.16
-    >>> add_damage_deposit(278.19)
-    306.01
+    >>> add_damage_deposit(290.58)
+    319.64
     '''
     deposit_amount = cost_after_taxes * .10
     total = deposit_amount + cost_after_taxes
@@ -66,17 +54,30 @@ def return_deposit(deposit):
     deposit = add_damage_deposit(cost_after_taxes) - adding_tax(beginning_cost)
     return round(deposit, 2)
 
-def choose_motorcycle(code):
+def valid_quantity(inventory, code, motorcycle):
+    ''' {{'code': str, 'type_of_motorcycle': str, 'color': str, 'quantity': int}}   
+    >>> types = {'0660': {'code': '0660', 'type': '2006 Suzuki GSXR 600', 'color': 'blue', 'quantity': 5}, '0410': {'code': '0410', 'type': '2004 Yamaha R1 1000', 'color': 'red', 'quantity': 9}}
+    >>> valid_quantity(types, '0660', 1)
+    True
+    >>> valid_quantity(types, '0410', 10)
+    False
+    '''
+    return inventory.get(code).get('quantity', -1) >= motorcycle
+
+def choose_motorcycle(inventory, code):
     '''str -> str'''
-    if code == '1':
+    if code == '0660':
         return '2006 Suzuki GSXR 600'
-    elif code == '2':
+    elif code == '0110':
         return '2004 Yamaha R1 1000'
-    elif code == '3':
+    elif code == '0190':
         return '2001 Kawasaki Ninja ZX-9R 900'
-    elif code == '4':
+    elif code == '1650':
         return '2016 Honda CBR 500'
-    elif code == '5':
+    elif code == '1765':
         return '2017 Kawasaki Ninja EX 650'
-    elif code == '6':
+    elif code == '0910':
         return '2009 Suzuki GSX 1000 Hayabusa'
+
+
+

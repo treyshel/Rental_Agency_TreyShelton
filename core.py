@@ -1,13 +1,14 @@
-def inventory(keys, lines):
+def inventory(read_line, read_lines):
     ''' [str, [str, str]]'''
     motorcycle = {}
-    key_1, key_2, key_3 = keys
+    key_1, key_2, key_3, key_4 = keys
     for keys in lines:
-        code, type_of_motorcycle, color = keys.strip().split(', ')
+        code, type_of_motorcycle, color, quantity = keys.strip().split(', ')
         motorcycle[code] = {
             key_1: code, 
             key_2: type_of_motorcycle, 
-            key_3: color
+            key_3: color,
+            key_4: quantity
         }
     return motorcycle
 

@@ -28,22 +28,24 @@ def adding_tax(tax_to_days):
     total = tax_amount + (tax_amount * .07)
     return round(total, 2)
 
-def damage_deposit(deposit):
+def damage_deposit(choice, inventory):
     '''float -> float
 
     adds 10% to cover the damage fee
 
-    >>> add_damage_deposit(3499.99)
+    >>> damage_deposit('0660', {'0660': {'code': '0660', 'type': '2006 Suzuki GSXR 600', 'color': 'blue', 'price': 3499.99, 'quantity': 5}})
     350.0
-    >>> add_damage_deposit(6499.99)
-    650.0
+    >>> damage_deposit('0410', {'0410': {'code': '0410', 'type': '2004 Yamaha R1 1000', 'color': 'red', 'price': 3749.99, 'quantity': 9}})
+    375.0
     '''
-    deposit_amount = deposit * .10
-    return round(deposit_amount, 2)
-
+    if choice == choice:
+        deposit = inventory[choice]['price'] * .10
+        return round(deposit, 2)
+def damage_deposit_and_tax(deposit, total):
+    return deposit + total
 def valid_quantity(inventory, code, motorcycle):
-    ''' {{'code': str, 'type_of_motorcycle': str, 'color': str, 'quantity': int}}   
-    >>> types = {'0660': {'code': '0660', 'type': '2006 Suzuki GSXR 600', 'color': 'blue', 'quantity': 5}, '0410': {'code': '0410', 'type': '2004 Yamaha R1 1000', 'color': 'red', 'quantity': 9}}
+    ''' {{'code': str, 'type_of_motorcycle': str, 'color': str, 'price': float, 'quantity': int}}   
+    >>> types = {'0660': {'code': '0660', 'type': '2006 Suzuki GSXR 600', 'color': 'blue', 'price': 3499.99, 'quantity': 5}, '0410': {'code': '0410', 'type': '2004 Yamaha R1 1000', 'color': 'red', 'price': 3749.99, 'quantity': 9}}
     >>> valid_quantity(types, '0660', 1)
     True
     >>> valid_quantity(types, '0410', 10)

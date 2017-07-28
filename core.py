@@ -1,59 +1,45 @@
-def inventory(read_line, read_lines):
+def motorcycle_inventory(i, inv):
     ''' [str, [str, str]]'''
     motorcycle = {}
-    key_1, key_2, key_3, key_4 = keys
-    for keys in lines:
-        code, type_of_motorcycle, color, quantity = keys.strip().split(', ')
+    key_1, key_2, key_3, key_4, key_5 = i
+    for key in inv:
+        code, type_of_motorcycle, color, price, quantity = key.strip().split(', ')
         motorcycle[code] = {
             key_1: code, 
             key_2: type_of_motorcycle, 
             key_3: color,
-            key_4: quantity
+            key_4: float(price),
+            key_5: int(quantity)
         }
     return motorcycle
 
-def adding_tax(beginning_cost):
+def adding_tax(tax_to_days):
     '''float -> float
     
-    adds 7% tax in to the starting cost
+    adds 7% tax in to the 
+    days they rent it (139.99/day)
     
-    >>> adding_tax(139.99)
+    >>> adding_tax(1)
     149.79
-    >>> adding_tax(279.98)
+    >>> adding_tax(2)
     299.58
     '''
-    tax_amount = beginning_cost * .07
-    total_with_tax = tax_amount + beginning_cost
-    return round(total_with_tax, 2)
-
-def add_damage_deposit(cost_after_taxes):
-    '''float -> float
-
-    adds 10% to the cost after taxes to 
-    cover the damage fee
-
-    >>> add_damage_deposit(149.79)
-    164.77
-    >>> add_damage_deposit(290.58)
-    319.64
-    '''
-    deposit_amount = cost_after_taxes * .10
-    total = deposit_amount + cost_after_taxes
+    tax_amount = tax_to_days * 139.99
+    total = tax_amount + (tax_amount * .07)
     return round(total, 2)
 
-def return_deposit(deposit):
+def damage_deposit(deposit):
     '''float -> float
 
-    returns the deposit back to customer
-    if no damage is done to rental bike
-    (deposit: 10% of total price)
-    >>> return_deposit(141.23)
-    12.84
-    >>> return_deposit(164.77)
-    14.98
+    adds 10% to cover the damage fee
+
+    >>> add_damage_deposit(3499.99)
+    350.0
+    >>> add_damage_deposit(6499.99)
+    650.0
     '''
-    deposit = add_damage_deposit(cost_after_taxes) - adding_tax(beginning_cost)
-    return round(deposit, 2)
+    deposit_amount = deposit * .10
+    return round(deposit_amount, 2)
 
 def valid_quantity(inventory, code, motorcycle):
     ''' {{'code': str, 'type_of_motorcycle': str, 'color': str, 'quantity': int}}   

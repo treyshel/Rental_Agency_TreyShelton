@@ -19,16 +19,16 @@ def open_history():
         history.append([str(split[0]), str(split[1]), float(split[2]), float(split[3]), int(split[4])])
     return history
 
-def in_history(type_of_motorcycle, amount_of_days, total_cost):
+def in_history(name, type_of_motorcycle, days, total):
     with open('history.txt', 'a') as history:
-        history.write('\n{}, {}, ${:.2f}'.format(name_of_renter, type_of_motorcycle, amount_of_days, total_cost))
+        history.write('\n{}, {}, {}, {:.2f}'.format(name, type_of_motorcycle, days, total))
 
-def quantity_take_away(inventory, type_of_motorcycle, quan_of_motorcycles):
+def quantity_take_away(inventory, type_of_motorcycle):
     ''' item, string, int, -> None '''
-    key1, key2, key3, key4 = 'code', 'type_of_motorcycle', 'color', 'price', 'quantity'
-    new_quantity = '{}, {}, {}, {}'.format(item.get(key1), item.get(key2), item.get(key3), item.get(key4), item.get(key5))
-    inventory[type_of_motorcycle]['quantity'] -= quan_of_motorcycles
+    key1, key2, key3, key4, key5 = 'code', 'type_of_motorcycle', 'color', 'price', 'quantity'
+    new_quantity = '{}, {}, {}, {}, {}'.format(key1, key2, key3, key4, key5)
+    inventory[type_of_motorcycle]['quantity'] -= 1
     for items in inventory.values():
-        new_quantity += '\n{}, {}, {}, {}'.format(items.get(key1), items.get(key2), items.get(key3), items.get(key4), items.get(key_5))
-    with open('inventory.txt', 'w') as file:
+        new_quantity += '\n{}, {}, {}, {}, {}'.format(items.get(key1), items.get(key2), items.get(key3), items.get(key4), items.get(key5))
+    with open('inventory.txt', 'a') as file:
         return new_quantity

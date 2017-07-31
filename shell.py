@@ -6,7 +6,7 @@ def greeting_message(inventory):
     message = '\t!!Welcome to Trey\'s Dos Wheel Motorcycle Rental Agency!!\n\n\n\t\t\t**139.99 each day**\n\t\t\t     **7% tax**\n\t  **3 FREE DAYS IF PURCHASED FOR 28 DAYS OR MORE**\n\t\t **10% damage fee added to price**\n\t\t No damage? Get your damage fee back!\n\nType the code of the motorcycle\nyou would like to rent:\n\n'
     for motorcycle in inventory.values():
         message += ('{} -> {} ({}): ${}\n'.format(motorcycle.get('code'), motorcycle.get('type_of_motorcycle'), motorcycle.get('color'), motorcycle.get('price')))
-    message += '\nLeave program = "Q" + "Enter"\n\n'
+    message += 'Leave program = "Q" + "Enter"\n\n'
     code = input(message)
     return code
 
@@ -32,12 +32,12 @@ def name_for_return():
 def return_message(type_of_motorcycle, name, total):
     print('\nName: {}\nYour Dos Motorcycle: {}\nTaxes: 7% of days (139.99/day)\nDamage Deposit: 10% of Motorcycle Cost\nYour total will be ${}'.format(name, type_of_motorcycle, total))
 
-def return_day(type_of_motorcycle, deposit):
-    input('Hello! We hope you had a great experience with our\Dos Motorcycle! What was the name for your rental under?\n')
-    if name == name_for_return(name):
-        print('Okay, it looks like you rented the {}. Here is your return\ndeposit of ${}, have a great day!'.format(deposit))
-    else:
-        input('I\'m sorry but we don\'t have a {}. Are there any\n other names you think it would maybe be under?\n')
+def return_day(type_of_motorcycle, name, deposit):
+    input('Hello! We hope you had a great experience with our Dos\nMotorcycle! What was the name for your rental under?\n')
+    # if name == name_for_return():
+    #     print('Okay, it looks like you rented the {}. Here is your return\ndeposit of ${}, have a great day!'.format(type_of_motorcycle, deposit))
+    # else:
+    #     input('I\'m sorry but we don\'t have a {}. Are there any\n other names you think it would maybe be under?\n')
 
 
 def main():
@@ -51,9 +51,10 @@ def main():
     amount = adding_tax(days)
     total = damage_deposit_and_tax(deposit, amount)
     return_message(type_of_motorcycle, name, total)
-
-    print('------------------------------------------------------------------------------------------------------------------\n\n*RETURN DAY*\n\n\n')
-
+    quantity_take_away(in_inventory, type_of_motorcycle)
+    in_history(name, type_of_motorcycle, days, total)
+    print('----------------------------------------------------------------------------------\n\n*RETURN DAY*\n\n\n')
+    return_day(type_of_motorcycle, name, deposit)
 
 
     

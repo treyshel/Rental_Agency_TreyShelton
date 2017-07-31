@@ -25,19 +25,34 @@ def get_days_message(type_of_motorcycle,inventory,choice):
     days = int(input('\nThe {} rental motorcycle is ${} before the 10%\ndamage fee. How many days would you like to rent this bike?\n'.format(type_of_motorcycle, inventory[choice]['price'])))
     return days
 
-def return_message(type_of_motorcycle, total):
-    print('\nYour Dos Motorcycle: {}\nTaxes: 7% of days (139.99/day)\nDamage Deposit: 10% of Motorcycle Cost\nYour total will be ${}'.format(type_of_motorcycle, total))
+def name_for_return():
+    name = str(input('\nAnd what will be the name you would like your Dos Motorcycle\norder to be under?\n'))
+    return name
+
+def return_message(type_of_motorcycle, name, total):
+    print('\nName: {}\nYour Dos Motorcycle: {}\nTaxes: 7% of days (139.99/day)\nDamage Deposit: 10% of Motorcycle Cost\nYour total will be ${}'.format(name, type_of_motorcycle, total))
+
+def return_day(type_of_motorcycle, deposit):
+    input('Hello! We hope you had a great experience with our\Dos Motorcycle! What was the name for your rental under?\n')
+    if name == name_for_return(name):
+        print('Okay, it looks like you rented the {}. Here is your return\ndeposit of ${}, have a great day!'.format(deposit))
+    else:
+        input('I\'m sorry but we don\'t have a {}. Are there any\n other names you think it would maybe be under?\n')
+
+
 def main():
     i, inv = dos_inventory()
     in_inventory = motorcycle_inventory(i, inv)
     type_of_motorcycle = get_motorcycle(in_inventory)
     pick = choose_motorcycle(in_inventory, type_of_motorcycle)
     days = get_days_message(pick, in_inventory,type_of_motorcycle)
+    name = name_for_return()
     deposit = damage_deposit(type_of_motorcycle, in_inventory)
     amount = adding_tax(days)
     total = damage_deposit_and_tax(deposit, amount)
-    return_message(type_of_motorcycle, total)
-    
+    return_message(type_of_motorcycle, name, total)
+
+    print('------------------------------------------------------------------------------------------------------------------\n\n*RETURN DAY*\n\n\n')
 
 
 

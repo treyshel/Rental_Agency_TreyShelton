@@ -1,4 +1,4 @@
-code, type_of_motorcycle, color, price, quan_of_motorcycles
+code, type_of_motorcycle, color, price, quantity
 0660, 2006 Suzuki GSXR 600, blue, 3499.99, 5 
 0410, 2004 Yamaha R1 1000, red, 3749.99, 9
 0190, 2001 Kawasaki Ninja ZX-9R 900, grey, 2995.99, 4

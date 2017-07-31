@@ -32,13 +32,6 @@ def name_for_return():
 def return_message(type_of_motorcycle, name, total):
     print('\nName: {}\nYour Dos Motorcycle: {}\nTaxes: 7% of days (139.99/day)\nDamage Deposit: 10% of Motorcycle Cost\nYour total will be ${}'.format(name, type_of_motorcycle, total))
 
-def return_day(type_of_motorcycle, name, deposit):
-    input('Hello! We hope you had a great experience with our Dos\nMotorcycle! What was the name for your rental under?\n')
-    # if name == name_for_return():
-    #     print('Okay, it looks like you rented the {}. Here is your return\ndeposit of ${}, have a great day!'.format(type_of_motorcycle, deposit))
-    # else:
-    #     input('I\'m sorry but we don\'t have a {}. Are there any\n other names you think it would maybe be under?\n')
-
 
 def main():
     i, inv = dos_inventory()
@@ -54,7 +47,11 @@ def main():
     quantity_take_away(in_inventory, type_of_motorcycle)
     in_history(name, type_of_motorcycle, days, total)
     print('----------------------------------------------------------------------------------\n\n*RETURN DAY*\n\n\n')
-    return_day(type_of_motorcycle, name, deposit)
+    input('Hello! We hope you had a great experience with our Dos\nMotorcycle! What was the name for your rental under?\n')
+    if name:
+        print('Okay, it looks like you rented the {}. Here is your return\ndeposit of ${}, have a great day!'.format(type_of_motorcycle, deposit))
+    else:
+        input('I\'m sorry but we don\'t have a {}. Are there any\n other names you think it would maybe be under?\n')
 
 
     

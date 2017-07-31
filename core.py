@@ -41,6 +41,7 @@ def damage_deposit(choice, inventory):
     if choice == choice:
         deposit = inventory[choice]['price'] * .10
         return round(deposit, 2)
+
 def damage_deposit_and_tax(deposit, total):
     return deposit + total
 def valid_quantity(inventory, code, motorcycle):
@@ -57,7 +58,7 @@ def choose_motorcycle(inventory, code):
     '''str -> str'''
     if code == '0660':
         return '2006 Suzuki GSXR 600'
-    elif code == '0110':
+    elif code == '0410':
         return '2004 Yamaha R1 1000'
     elif code == '0190':
         return '2001 Kawasaki Ninja ZX-9R 900'

@@ -13,7 +13,7 @@ def motorcycle_inventory(i, inv):
         }
     return motorcycle
 
-def adding_tax(tax_to_days):
+def adding_tax(days):
     '''float -> float
     
     adds 7% tax in to the 
@@ -24,7 +24,7 @@ def adding_tax(tax_to_days):
     >>> adding_tax(2)
     299.58
     '''
-    tax_amount = tax_to_days * 139.99
+    tax_amount = days * 139.99
     total = tax_amount + (tax_amount * .07)
     return round(total, 2)
 

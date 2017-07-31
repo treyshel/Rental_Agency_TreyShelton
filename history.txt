@@ -1,5 +1,13 @@
 name_of_renter, type_of_motorcycle, amount_of_days, total_cost
-
 trey, 0190, $2.00
 trey, 1650, 2, 949.58
+trey, 1765, 2, 1049.58
+trey, 1765, 2, 1049.58
+trey, 0660, 2, 649.58
+trey, 0410, 2, 674.58
+trey, 0190, 2, 599.18
+trey, 0660, 2, 649.58
+trey, 0410, 2, 674.58
+trey, 0660, 2, 649.58
+trey, 0910, 2, 1029.58
 trey, 1765, 2, 1049.58

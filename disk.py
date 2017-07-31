@@ -30,5 +30,7 @@ def quantity_take_away(inventory, type_of_motorcycle):
     inventory[type_of_motorcycle]['quantity'] -= 1
     for items in inventory.values():
         new_quantity += '\n{}, {}, {}, {}, {}'.format(items.get(key1), items.get(key2), items.get(key3), items.get(key4), items.get(key5))
-    with open('inventory.txt', 'a') as file:
-        return new_quantity
+    with open('inventory.txt', 'w') as file:
+        return file.write(new_quantity)
+
+

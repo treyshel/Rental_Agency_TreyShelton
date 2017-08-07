@@ -8,6 +8,7 @@ def dos_inventory():
         lines = file.readlines()
     return [l, lines]
 
+
 def open_history():
     ''' [[str ,str, float]] -> None'''
     history = []
@@ -16,12 +17,21 @@ def open_history():
         read_rest = history.readlines()
     for lines in read_rest:
         split = lines.strip().split(', ')
-        history.append([str(split[0]), str(split[1]), float(split[2]), float(split[3]), int(split[4])])
+        history.append([
+            str(split[0]),
+            str(split[1]),
+            float(split[2]),
+            float(split[3]),
+            int(split[4])
+        ])
     return history
+
 
 def in_history(name, type_of_motorcycle, days, total):
     with open('history.txt', 'a') as history:
-        history.write('\n{}, {}, {}, {:.2f}'.format(name, type_of_motorcycle, days, total))
+        history.write('\n{}, {}, {}, ${:.2f}'.format(name, type_of_motorcycle,
+                                                     days, total))
+
 
 def quantity_take_away(inventory, type_of_motorcycle):
     ''' item, string, int, -> None '''
@@ -29,8 +39,14 @@ def quantity_take_away(inventory, type_of_motorcycle):
     new_quantity = '{}, {}, {}, {}, {}'.format(key1, key2, key3, key4, key5)
     inventory[type_of_motorcycle]['quantity'] -= 1
     for items in inventory.values():
-        new_quantity += '\n{}, {}, {}, {}, {}'.format(items.get(key1), items.get(key2), items.get(key3), items.get(key4), items.get(key5))
+        new_quantity += '\n{}, {}, {}, {}, {}'.format(
+            items.get(key1),
+            items.get(key2), items.get(key3), items.get(key4), items.get(key5))
     with open('inventory.txt', 'w') as file:
         return file.write(new_quantity)
 
 
+def quantity_after_return(inventory, type_of_motorcycle):
+    ''' item, string, int -> None'''
+    unreturned_quantity = quantity_take_away(inventory, type_of_motorcycle)
+    return unreturned_quantity + 1

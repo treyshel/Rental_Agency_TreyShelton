@@ -3,22 +3,28 @@ def motorcycle_inventory(i, inv):
     motorcycle = {}
     key_1, key_2, key_3, key_4, key_5 = i
     for key in inv:
-        code, type_of_motorcycle, color, price, quantity = key.strip().split(', ')
+        code, type_of_motorcycle, color, price, quantity = key.strip().split(
+            ', ')
         motorcycle[code] = {
-            key_1: code, 
-            key_2: type_of_motorcycle, 
+            key_1: code,
+            key_2: type_of_motorcycle,
             key_3: color,
             key_4: float(price),
             key_5: int(quantity)
         }
     return motorcycle
 
+
 def get_greeting_message(inventory):
     message = '\t!!Welcome to Trey\'s Dos Wheel Motorcycle Rental Agency!!\n\n\n\t\t\t**$139.99 each day**\n\t\t\t     **7% tax**\n\t  **3 FREE DAYS IF PURCHASED FOR 28 DAYS OR MORE**\n\t\t **10% damage fee added to price**\n\t\t No damage? Get your damage fee back!\n\nType the code of the motorcycle\nyou would like to rent:\n\n'
     for motorcycle in inventory.values():
-        message += ('{} -> {} ({}): ${}\n'.format(motorcycle.get('code'), motorcycle.get('type_of_motorcycle'), motorcycle.get('color'), motorcycle.get('price')))
+        message += ('{} -> {} ({}): ${}\n'.format(
+            motorcycle.get('code'),
+            motorcycle.get('type_of_motorcycle'),
+            motorcycle.get('color'), motorcycle.get('price')))
     message += 'Leave program = "Q" + "Enter"\n\n'
     return message
+
 
 def valid_quantity_in_stock(in_inventory, code, pick):
     ''' {{'code': str, 'type_of_motorcycle': str, 'color': str, 'price': float, 'quantity': int}}   
@@ -46,6 +52,7 @@ def adding_tax(days):
     total = tax_amount + (tax_amount * .07)
     return round(total, 2)
 
+
 def damage_deposit(choice, inventory):
     '''float -> float
 
@@ -60,13 +67,12 @@ def damage_deposit(choice, inventory):
         deposit = inventory[choice]['price'] * .10
         return round(deposit, 2)
 
+
 def damage_deposit_and_tax(deposit, amount):
+    ''' float -> float'''
     return deposit + amount
+
 
 def choose_motorcycle(in_inventory, code):
     '''Item, str -> str'''
     return in_inventory[code]['type_of_motorcycle']
-    
-
-
-

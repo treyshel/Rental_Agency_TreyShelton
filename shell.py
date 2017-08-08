@@ -72,6 +72,7 @@ def customer_decision():
             deposit = damage_deposit(code, in_inventory)
             amount = adding_tax(int(days))
             total = damage_deposit_and_tax(deposit, amount)
+            time.sleep(1.5)
             return_message(pick, total)
             quantity_take_away(in_inventory, code)
             in_history(code, days, total)
@@ -86,6 +87,7 @@ def customer_decision():
             return_pick = choose_motorcycle(return_in_inventory, return_code)
             return_days = return_amount_of_days(return_pick)
             return_deposit = damage_deposit(return_code, return_in_inventory)
+            time.sleep(1.5)
             get_return_deposit(return_pick, return_days, return_deposit)
             quantity_after_return(return_in_inventory, return_code)
             history_for_return(return_code, return_days, return_deposit)
@@ -97,11 +99,27 @@ def customer_decision():
             )
 
 
+def employee_decision():
+    while True:
+        decision = input(
+            '\nHello employee! Push "1" to check the store revenue.\n')
+        if decision == '1':
+            total_revenue = store_revenue()
+            time.sleep(1.5)
+            print('\n\nTotal store revenue: ${:.2f}'.format(total_revenue))
+            break
+        else:
+            print('\nNo other option. Please try again.')
+
+
 def main():
     while True:
         customer_or_employee = input('Are you a customer or an employee?\n')
         if customer_or_employee.title().strip() == 'customer'.title().strip():
             return customer_decision()
+        elif customer_or_employee.title().strip() == 'employee'.title().strip(
+        ):
+            return employee_decision()
         else:
             print('Please type customer or employee to continue.\n')
 

@@ -1,7 +1,7 @@
 code, type_of_motorcycle, color, price, quantity
-0410, 2004 Yamaha R1 1000, red, 3749.99, 3
-1650, 2016 Honda CBR 500, white, 6499.99, 8
-0190, 2001 Kawasaki Ninja ZX-9R 900, grey, 2995.99, 4
-1765, 2017 Kawasaki Ninja EX 650, green, 7499.99, 7
-0910, 2009 Suzuki Hayabusa 1000, black, 7299.99, 8
-0660, 2006 Suzuki GSXR 600, blue, 3499.99, 8
+1650, 2016 Honda CBR 500, white, 6499.99, 9
+0190, 2001 Kawasaki Ninja ZX-9R 900, grey, 2995.99, 9
+0660, 2006 Suzuki GSXR 600, blue, 3499.99, 11
+0910, 2009 Suzuki Hayabusa 1000, black, 7299.99, 11
+0410, 2004 Yamaha R1 1000, red, 3749.99, 10
+1765, 2017 Kawasaki Ninja EX 650, green, 7499.99, 11

@@ -27,10 +27,10 @@ def open_history():
     return history
 
 
-def in_history(name, type_of_motorcycle, days, total):
+def in_history(type_of_motorcycle, days, total):
     with open('history.txt', 'a') as history:
-        history.write('\n{}, {}, {}, ${:.2f}'.format(name, type_of_motorcycle,
-                                                     days, total))
+        history.write(
+            '\n{}, {}, ${:.2f}'.format(type_of_motorcycle, days, total))
 
 
 def quantity_take_away(inventory, type_of_motorcycle):
@@ -46,7 +46,21 @@ def quantity_take_away(inventory, type_of_motorcycle):
         return file.write(new_quantity)
 
 
+#exact same as take away just add 1 instead of subtract
 def quantity_after_return(inventory, type_of_motorcycle):
     ''' item, string, int -> None'''
-    unreturned_quantity = quantity_take_away(inventory, type_of_motorcycle)
-    return unreturned_quantity + 1
+    key1, key2, key3, key4, key5 = 'code', 'type_of_motorcycle', 'color', 'price', 'quantity'
+    new_quantity = '{}, {}, {}, {}, {}'.format(key1, key2, key3, key4, key5)
+    inventory[type_of_motorcycle]['quantity'] += 1
+    for items in inventory.values():
+        new_quantity += '\n{}, {}, {}, {}, {}'.format(
+            items.get(key1),
+            items.get(key2), items.get(key3), items.get(key4), items.get(key5))
+    with open('inventory.txt', 'w') as file:
+        return file.write(new_quantity)
+
+
+def history_for_return(type_of_motorcycle, days, total_of_deposit_return):
+    with open('history.txt', 'a') as history:
+        history.write('\n{}, {}, ${} (return deposit)'.format(
+            type_of_motorcycle, days, total_of_deposit_return))

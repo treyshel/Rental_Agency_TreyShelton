@@ -26,44 +26,25 @@ def get_days_message(type_of_motorcycle, inventory, choice):
             print('\nINVALID CHOICE')
 
 
-def name_for_rental():
-    while True:
-        name = str(
-            input(
-                '\nAnd what will be the name/code you would like your Dos Motorcycle\norder to be under?\n'
-            )).title().strip()
-    return name
-
-
-def return_message(pick, name, total):
+def return_message(pick, total):
     print(
-        '\nName/code: {}\nYour Dos Motorcycle: {}\nTaxes: 7% of days ($139.99/day)\nDamage Deposit: 10% of Motorcycle Cost\nYour total will be ${:.2f}\n\nHAVE A GREAT DAY!'.
-        format(name, pick, total))
+        '\nYour Dos Motorcycle: {}\nTaxes: 7% of days ($139.99/day)\nDamage Deposit: 10% of Motorcycle Cost\nYour total will be ${:.2f}\n\nHAVE A GREAT DAY!'.
+        format(pick, total))
 
 
-def name_for_return():
-    while True:
-        return_name.title().strip() = input(
-            'We hope you had a great experience with our Dos\nMotorcycle! What was the name/code for your rental under?\n'
-        ).title().strip()
-        return return_name
+def customer_chooses_bike_they_rented(inventory):
+    message = '\nWe hope you had a great experience with our Dos\nMotorcycle!\nPlease choose the motorcycle that you rented from us:\n\n'
+    for motorcycle in inventory.values():
+        message += ('{} -> {} ${}\n'.format(
+            motorcycle.get('code'),
+            motorcycle.get('type_of_motorcycle'), motorcycle.get('price')))
+    message += 'OR type "Q" to leave the program\n\n'
+    return message
 
 
-def return_decision():
-    while True:
-        for motorcycle in inventory.values():
-            motorcycle = input(
-                'Type the code of which motorcycle you rented:\n\n{} -> {} ${}'.
-                format(
-                    motorcycle.get('code'),
-                    motorcycle.get('type_of_motorcycle'),
-                    motorcycle.get('price')))
-        return motorcycle
-
-
-def get_return_deposit(return_name, motorcycle):
-    print('Renter name/code: {}\nMotorcycle rented: {}\nReturn deposit: {}'.
-          format(return_name, motorcycle))
+def get_return_deposit(motorcycle, return_dep):
+    print('\nMotorcycle rented: {}\nReturn deposit: {}'.format(
+        motorcycle, return_dep))
 
 
 def customer_decision():
@@ -78,18 +59,29 @@ def customer_decision():
             code = get_motorcycle(in_inventory, greeting_message)
             pick = choose_motorcycle(in_inventory, code)
             days = get_days_message(pick, in_inventory, code)
-            name = name_for_rental()
             deposit = damage_deposit(code, in_inventory)
             amount = adding_tax(int(days))
             total = damage_deposit_and_tax(deposit, amount)
-            return_message(pick, name, total)
+            return_message(pick, total)
             quantity_take_away(in_inventory, code)
-            in_history(name, code, days, total)
+            in_history(code, days, total)
             break
         elif decision == '2':
-            return_name = name_for_return()
-            motorcycle = return_decision()
-            get_return_deposit(return_name, motorcycle)
+            return_i, return_inv = dos_inventory()
+            return_in_inventory = motorcycle_inventory(return_i, return_inv)
+            return_greeting_message = customer_chooses_bike_they_rented(
+                return_in_inventory)
+            return_code = get_motorcycle(return_in_inventory,
+                                         return_greeting_message)
+            return_pick = choose_motorcycle(return_in_inventory, return_code)
+            return_deposit = damage_deposit(return_code, return_in_inventory)
+            get_return_deposit(return_pick, return_deposit)
+            break
+
+        else:
+            print(
+                'I\'m sorry. You have chosen an invalid decision.\nPlease try again.'
+            )
 
 
 def main():

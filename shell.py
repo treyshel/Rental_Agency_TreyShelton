@@ -42,9 +42,19 @@ def customer_chooses_bike_they_rented(inventory):
     return message
 
 
-def get_return_deposit(motorcycle, return_dep):
-    print('\nMotorcycle rented: {}\nReturn deposit: {}'.format(
-        motorcycle, return_dep))
+def return_amount_of_days(choice):
+    while True:
+        days = input('\nHow many days did you have the {}?\n'.format(choice))
+        if days.strip().isnumeric():
+            return days
+        else:
+            print('\nINVALID CHOICE. MUST USE A NUMBER.')
+
+
+def get_return_deposit(motorcycle, days, return_dep):
+    print(
+        '\nMotorcycle rented: {}\nAmount of days rented: {}\nReturn deposit: ${}'.
+        format(motorcycle, days, return_dep))
 
 
 def customer_decision():
@@ -74,8 +84,11 @@ def customer_decision():
             return_code = get_motorcycle(return_in_inventory,
                                          return_greeting_message)
             return_pick = choose_motorcycle(return_in_inventory, return_code)
+            return_days = return_amount_of_days(return_pick)
             return_deposit = damage_deposit(return_code, return_in_inventory)
-            get_return_deposit(return_pick, return_deposit)
+            get_return_deposit(return_pick, return_days, return_deposit)
+            quantity_after_return(return_in_inventory, return_code)
+            history_for_return(return_code, return_days, return_deposit)
             break
 
         else:

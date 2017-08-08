@@ -9,22 +9,28 @@ def dos_inventory():
     return [l, lines]
 
 
-def open_history():
-    ''' [[str ,str, float]] -> None'''
+def store_revenue_helper():
+    ''' [[str ,str, str]] -> None'''
     history = []
     with open('history.txt', 'r') as documented_rentals:
         documented_rentals.readline()
-        read_rest = history.readlines()
+        read_rest = documented_rentals.readlines()
     for lines in read_rest:
         split = lines.strip().split(', ')
-        history.append([
-            str(split[0]),
-            str(split[1]),
-            float(split[2]),
-            float(split[3]),
-            int(split[4])
-        ])
+        history.append(
+            [str(split[0]),
+             str(split[1]),
+             float(split[2].replace('$', ''))])
     return history
+
+
+def store_revenue():
+    price = 0
+    history = store_revenue_helper()
+    for item in history:
+        item[2] = float(item[2]) + float(item[2])
+        price += item[2]
+    return price
 
 
 def in_history(type_of_motorcycle, days, total):
@@ -62,5 +68,5 @@ def quantity_after_return(inventory, type_of_motorcycle):
 
 def history_for_return(type_of_motorcycle, days, total_of_deposit_return):
     with open('history.txt', 'a') as history:
-        history.write('\n{}, {}, ${} (return deposit)'.format(
-            type_of_motorcycle, days, total_of_deposit_return))
+        history.write('\n{}, {}, $-{}'.format(type_of_motorcycle, days,
+                                              total_of_deposit_return))

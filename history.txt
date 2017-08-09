@@ -8,3 +8,6 @@ type_of_motorcycle, amount_of_days, total_cost_or_return_deposit
 1765, 2, $1049.58
 0910, 1, $-730.0
 1650, 3, $1099.37
+0660, 1, $-350.0
+0910, 1, $879.79
+0910, 1, $-730.0

@@ -26,17 +26,6 @@ def get_greeting_message(inventory):
     return message
 
 
-def valid_quantity_in_stock(in_inventory, code, pick):
-    ''' {{'code': str, 'type_of_motorcycle': str, 'color': str, 'price': float, 'quantity': int}}   
-    >>> types = {'0660': {'code': '0660', 'type': '2006 Suzuki GSXR 600', 'color': 'blue', 'price': 3499.99, 'quantity': 5}, '0410': {'code': '0410', 'type': '2004 Yamaha R1 1000', 'color': 'red', 'price': 3749.99, 'quantity': 9}}
-    >>> valid_quantity(types, '0660', 1)
-    True
-    >>> valid_quantity(types, '0410', 10)
-    False
-    '''
-    return in_inventory.get(code).get('quantity', -1) >= pick
-
-
 def adding_tax(days):
     '''int -> float
     

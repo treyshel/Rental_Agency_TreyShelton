@@ -3,6 +3,17 @@ from disk import *
 import time
 
 
+def get_greeting_message(inventory):
+    message = '\t!!Welcome to Trey\'s Dos Wheel Motorcycle Rental Agency!!\n\n\n\t\t\t**$139.99 each day**\n\t\t\t     **7% tax**\n\t  **3 FREE DAYS IF PURCHASED FOR 28 DAYS OR MORE**\n\t\t **10% damage fee added to price**\n\t\t No damage? Get your damage fee back!\n\nType the code of the motorcycle\nyou would like to rent:\n\n'
+    for motorcycle in inventory.values():
+        message += ('{} -> {} ({}): ${}\n'.format(
+            motorcycle.get('code'),
+            motorcycle.get('type_of_motorcycle'),
+            motorcycle.get('color'), motorcycle.get('price')))
+    message += 'Leave program = "Q" + "Enter"\n\n'
+    return message
+
+
 def get_motorcycle(inventory, message):
     while True:
         code = input(message)
@@ -63,8 +74,8 @@ def customer_decision():
             '\nHey there! What will you be needing today?\n\n*Press 1 to rent a Dos Wheel Motorcycle\n*Press 2 to return a Dos Wheel Motorcycle\n'
         )
         if decision == '1':
-            i, inv = dos_inventory()
-            in_inventory = motorcycle_inventory(i, inv)
+            keys, inv = dos_inventory()
+            in_inventory = motorcycle_inventory(keys, inv)
             greeting_message = get_greeting_message(in_inventory)
             code = get_motorcycle(in_inventory, greeting_message)
             pick = choose_motorcycle(in_inventory, code)
@@ -78,8 +89,8 @@ def customer_decision():
             in_history(code, days, total)
             break
         elif decision == '2':
-            return_i, return_inv = dos_inventory()
-            return_in_inventory = motorcycle_inventory(return_i, return_inv)
+            return_keys, return_inv = dos_inventory()
+            return_in_inventory = motorcycle_inventory(return_keys, return_inv)
             return_greeting_message = customer_chooses_bike_they_rented(
                 return_in_inventory)
             return_code = get_motorcycle(return_in_inventory,

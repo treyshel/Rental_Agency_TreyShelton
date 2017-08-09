@@ -1,7 +1,7 @@
-def motorcycle_inventory(i, inv):
+def motorcycle_inventory(keys, inv):
     ''' [str, [str, str]]'''
     motorcycle = {}
-    key_1, key_2, key_3, key_4, key_5 = i
+    key_1, key_2, key_3, key_4, key_5 = keys
     for key in inv:
         code, type_of_motorcycle, color, price, quantity = key.strip().split(
             ', ')
@@ -13,17 +13,6 @@ def motorcycle_inventory(i, inv):
             key_5: int(quantity)
         }
     return motorcycle
-
-
-def get_greeting_message(inventory):
-    message = '\t!!Welcome to Trey\'s Dos Wheel Motorcycle Rental Agency!!\n\n\n\t\t\t**$139.99 each day**\n\t\t\t     **7% tax**\n\t  **3 FREE DAYS IF PURCHASED FOR 28 DAYS OR MORE**\n\t\t **10% damage fee added to price**\n\t\t No damage? Get your damage fee back!\n\nType the code of the motorcycle\nyou would like to rent:\n\n'
-    for motorcycle in inventory.values():
-        message += ('{} -> {} ({}): ${}\n'.format(
-            motorcycle.get('code'),
-            motorcycle.get('type_of_motorcycle'),
-            motorcycle.get('color'), motorcycle.get('price')))
-    message += 'Leave program = "Q" + "Enter"\n\n'
-    return message
 
 
 def adding_tax(days):

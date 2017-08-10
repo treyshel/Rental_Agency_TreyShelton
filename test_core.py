@@ -54,19 +54,12 @@ def test_choose_motorcycle():
 
 def test_motorcycle_inventory():
     inventory = {
-        '0660': {
-            'code': '0660',
-            'type_of_motorcycle': '2006 Suzuki GSXR 600',
-            'color': 'blue',
-            'price': 3499.99,
-            'quantity': 5
-        },
         '0410': {
             'code': '0410',
             'type_of_motorcycle': '2004 Yamaha R1 1000',
             'color': 'red',
-            'price': 3749.99,
-            'quantity': 9
+            'price': '3749.99',
+            'quantity': '9'
         }
     }
     assert motorcycle_inventory('0410', inventory) == {
